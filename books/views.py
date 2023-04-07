@@ -1,8 +1,9 @@
-from django.views import ListView
+from django.views.generic import ListView
 
 from books.models import Book
 
 
 class HomeView(ListView):
-    query_set = Book.objects.order_by("-id")
-    template_name = 'home.html'
+    queryset = Book.objects.order_by("-id")
+    template_name = "home.html"
+    context_object_name = "books"

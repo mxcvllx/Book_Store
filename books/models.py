@@ -1,18 +1,17 @@
-from django.db import models
-
 from django.conf import settings
+from django.db import models
 
 
 class Book(models.Model):
     class LanguageTypes(models.TextChoices):
         UZBEK = 'uzbek', 'Uzbek'
-        RUSSIAN = 'russian', "Russian"
+        RUSSIAN = 'russian', 'Russian'
         ENGLISH = 'english', 'English'
 
     title = models.CharField(max_length=255)
-    slag = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True)
     description = models.TextField()
-    price = models.FloatField(unique=True)
+    price = models.FloatField()
     sale_percent = models.PositiveSmallIntegerField(default=0)
     best_seller = models.BooleanField(default=False)
     pub_year = models.PositiveIntegerField(null=True)
