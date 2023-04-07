@@ -5,29 +5,10 @@
         <div class="card-group">
             {% for book in books %}
                 <div class="card">
-                    <img src="{{ book.image.url }}" class="card-img-top" alt="..." width="100" height="100">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="..." width="100" height="500">
                     <div class="card-body">
                         <h5 class="card-title">{{ book.title }}</h5>
-                        <p class="card-text">{{ book.desc }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">{{ book.pub_year }}</small>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{{ book.image.url }}" class="card-img-top" alt="..." width="100" height="100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
-                        <p class="card-text">{{ book.desc }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">{{ book.pub_year }}</small>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{{ book.image.url }}" class="card-img-top" alt="..." width="100" height="100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
+                        {% if book.descreption|length > 80 %}
                         <p class="card-text">{{ book.desc }}</p>
                     </div>
                     <div class="card-footer">
