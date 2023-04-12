@@ -1,3 +1,5 @@
+from django.db.models import Q
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from books.models import Book
 
@@ -33,3 +35,19 @@ class BookDetailView(DetailView):
     queryset = Book.objects.all()
     template_name = "books/book_detail.html"
     context_object_name = "book"
+
+
+class SearchView(ListView):
+    queryset = Book.objects.all()
+    template_name = "search.html"
+    context_object_name = "results"
+
+
+def search(request):
+    search_query = request.POST.get("search")
+    expression = (
+            Q(title__icontains=search_query) |
+            Q(description__icontains=search_query)
+    )
+    queryset = Book.objects.filter(expression)
+    return render(request, "search.html", {"results": queryset})
